@@ -38,7 +38,7 @@ public class Group {
 	 * @TODO Do something about createTime...
 	 */
 	@JsonCreator
-	public void Group(
+	public Group(
 			@JsonProperty("GroupId") Long groupId,
 			@JsonProperty("GtIdCreator") String gtIdCreator,
 			@JsonProperty("Name") String name,

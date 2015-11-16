@@ -31,8 +31,8 @@ import javax.ws.rs.core.MediaType;
 public class GroupEndpoint {
     /**
      * Add a new Group object to the datastore.
-     * @param  group     The Group object that is to be added to the datastore.
-     * @return           The Group that has just been added.
+     * @param  group	The Group object that is to be added to the datastore.
+     * @return          The Group that has just been added.
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
