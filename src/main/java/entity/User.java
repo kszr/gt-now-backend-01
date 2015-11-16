@@ -4,6 +4,9 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class User {
     @Id String userId;
@@ -23,14 +26,21 @@ public class User {
     }   
 
     private User() {
-
+        this.userId = null;
+        this.name = null;
+        this.gmailId = null;
+        this.location = null;
+        this.timestamp = null;
     }
 
-    public User(String userId,
-                String name,
-                String gmailId,
-                Location location,
-                String timestamp) {
+    @JsonCreator
+    public User(
+        @JsonProperty("UserId") String userId,
+        @JsonProperty("Name") String name,
+        @JsonProperty("GmailId") String gmailId,
+        @JsonProperty("Location") Location location,
+        @JsonProperty("Timestamp") String timestamp
+    ) {
         this.userId = userId;
         this.name = name;
         this.gmailId = gmailId;
