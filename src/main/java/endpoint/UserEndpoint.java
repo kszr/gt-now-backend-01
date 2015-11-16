@@ -19,7 +19,7 @@
 //         return ofy().load().type(User.class).id(userId).now();
 //     }
 // }
-package com.mindstorm.api;
+package endpoint;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;

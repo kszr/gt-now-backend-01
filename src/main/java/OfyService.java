@@ -1,3 +1,5 @@
+package endpoint;
+
 import com.googlecode.objectify.ObjectifyService;
 import javax.inject.Inject;
 
