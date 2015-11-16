@@ -1,6 +1,7 @@
 package endpoint;
 
 import entity.Group;
+import entity.Invitation;
 import entity.User;
 import object.Location;
 
@@ -74,7 +75,7 @@ public class GroupEndpoint {
      * @param  groupId	The groupId of the Group being requested
      * @return			A List of all Users in that Group.
      * 
-     * @TODO Everything, please.
+     * @TODO Everything, please. [Invitation]
      */
     @GET
     @Path("{groupId}/users")
@@ -89,7 +90,7 @@ public class GroupEndpoint {
      * @param  userId	The userId of the User being deleted.
      * @return			The deleted User.
      * 
-     * @TODO Everything.
+     * @TODO Everything [Invitation].
      */
     @DELETE
     @Path("{groupId}/{userId}")
@@ -103,6 +104,8 @@ public class GroupEndpoint {
      * @param  groupId	The groupId of the Group being accessed.
      * @param  user		The User to be added to the Group.
      * @return			The User that has just been added.
+     * 
+     * @TODO			Find a way to add user directly to group... [Invitation]
      */
     @PUT
     @Path("{groupId}")
