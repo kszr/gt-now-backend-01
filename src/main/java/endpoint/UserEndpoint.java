@@ -19,11 +19,6 @@
 //         return ofy().load().type(User.class).id(userId).now();
 //     }
 // }
-
-/**
- * @TODO: Add this endpoint to web.xml file.
- */
-
 package com.mindstorm.api;
 
 import com.google.api.server.spi.config.Api;
