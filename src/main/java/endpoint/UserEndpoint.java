@@ -3,8 +3,6 @@
 // import javax.inject.Inject;
 // import javax.servlet.http.HttpServletRequest;
 // import javax.ws.rs.FormParam;
-// import javax.ws.rs.GET;
-// import javax.ws.rs.Path;
 // import javax.ws.rs.Produces;
 // import javax.ws.rs.core.MediaType;
 
@@ -21,40 +19,128 @@
 // }
 package endpoint;
 
+import entity.User;
+
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Nullable;
 import com.google.api.server.spi.response.CollectionResponse;
-import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.NotFoundException;
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.QueryResultIterator;
 import com.googlecode.objectify.cmd.Query;
 
-import static com.mindstorm.api.OfyService.ofy;
+import static OfyService.ofy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Named;
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.Path;
 
 @Api(name = "userEndpoint", version = "v1", namespace = @ApiNamespace(ownerDomain = "api.mindstorm.com", ownerName = "api.mindstorm.com", packagePath=""))
+@Path("/api")
 public class UserEndpoint {
-
-// Make sure to add this endpoint to your web.xml file if this is a web application.
-
     public UserEndpoint() {
 
     }
 
-/**
-* Return a collection of users
-*
-* @param count The number of users
-* @return a list of Users
-*/
+    /**
+     * Add a new User object to the datastore.
+     * @param   user     The User object that is to be added to the datastore.
+     * @return           The User that has just been added.
+     */
+    //@ApiMethod(name = "createUser")
+    @POST
+    @Path("/user")
+    public User createUser(User user) {
+        //NOT CHECKING FOR CONFLICTS, because
+        //load()'ing and then save()'ing objects
+        //is central to updating with Objectify.
+
+        // if (user.userId != null) {
+        //     if (findRecord(user.userId) != null) {
+        //         throw new ConflictException("Object already exists");
+        //     }
+        // }
+        return ofy().save().entity(user).now();
+    }
+
+    /**
+     * Retrieve a User (if it exists) from the datastore by userId.
+     * @param   userId      The userId of the User whose information is to be retrieved.
+     * @return              The User that is to be retrieved.
+     */
+    @GET
+    @Path("/user/{userId}")
+    public User getUser(String userId) {
+        return ofy().load().type(User.class).id(userId).now();
+    }
+
+    /**
+     * Update a User's information.
+     * @TODO    Everything, please.
+     * CONCEPTS: If you want to update a User's information, you have to
+     * retrieve it from the datastore with load(), modify its information, and then
+     * put the same object back into the datastore with save().
+     */
+    @PUT
+    @Path("/user/{userId}")
+    public User updateUserInformation() {
+        return null;
+    }
+
+    /**
+     * Delete a User from the datastore.
+     * @param   userId      The userId of the User that is to be deleted.
+     * @return              The User that has just been deleted.
+     */
+    @DELETE
+    @Path("/user/{userId}")
+    public User deleteUser(String userId) {
+        return ofy().delete().type(User.class).id(userId).now();
+    }
+
+    /**
+     * Get a User's Location.
+     * @param   userId      The userId of the User whose Location is to be retrieved.
+     * @return              The Location of the user.
+     */
+    @GET
+    @Path("/user/{userId}")
+    public Location getUserLocation(String userId) {
+        User user = ofy().load().type(User.class).id(userId).now();
+        return user.location;
+    }
+
+    /**
+     * Update a User's Location.
+     * @param   userId      The userId of the User whose Location is to be updated.
+     * @param   location    The new Location of the User.
+     * @return              The updated User.\
+     *
+     * @TODO                EVERYTHING.
+     */
+    @PUT
+    @Path("/user/{userId}")
+    public User updateUserLocation(String userId, Location location) {
+        return null;
+    }
+
+
+// /**
+// * Return a collection of users
+// *
+// * @param count The number of users
+// * @return a list of Users
+// */
 // @ApiMethod(name = "listQuote")
 // public CollectionResponse<Quote> listQuote(@Nullable @Named("cursor") String cursorString,
 // @Nullable @Named("count") Integer count) {
@@ -92,40 +178,6 @@ public class UserEndpoint {
 // * @return The object to be added.
 // */
 
-
-    //@ApiMethod(name = "createUser")
-    @POST
-    @Path("/user")
-    public User createUser(User user) throws ConflictException {
-        //If if is not null, then check if it exists. If yes, throw an Exception
-        //that it is already present
-        if (user.userId != null) {
-            if (findRecord(user.userId) != null) {
-                throw new ConflictException("Object already exists");
-            }
-        }
-        //Since our @Id field is a Long, Objectify will generate a unique value for us
-        //when we use put
-        ofy().save().entity(user).now();
-        return user;
-    }
-
-    @GET
-    @Path("/user/{userId}")
-    public User getUser(String userId) throws ConflictException {
-        //If if is not null, then check if it exists. If yes, throw an Exception
-        //that it is already present
-        // if (userId == null) {
-        //     if (findRecord(user.userId) != null) {
-        //         throw new ConflictException("Object already exists");
-        //     }
-        // }
-        //Since our @Id field is a Long, Objectify will generate a unique value for us
-        //when we use put
-        return ofy().load().type(User.class).id(userId).now();
-    }
-
-
 // /**
 // * This updates an existing <code>Quote</code> object.
 // * @param quote The object to be added.
@@ -153,10 +205,10 @@ public class UserEndpoint {
 // ofy().delete().entity(record).now();
 // }
 
-//Private method to retrieve a <code>Quote</code> record
-private Quote findRecord(Long id) {
-return ofy().load().type(Quote.class).id(id).now();
-//or return ofy().load().type(Quote.class).filter("id",id).first.now();
-}
+// //Private method to retrieve a <code>Quote</code> record
+// private Quote findRecord(Long id) {
+// return ofy().load().type(Quote.class).id(id).now();
+// //or return ofy().load().type(Quote.class).filter("id",id).first.now();
+// }
 
 }
