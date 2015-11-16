@@ -16,7 +16,7 @@ public class User {
     private Location location;
     private String timestamp; //Location was last updated at this time.
 
-    public class Location {
+    public static class Location {
         public double latitude;
         public double longitude;
 
@@ -39,8 +39,7 @@ public class User {
         @JsonProperty("UserId") String userId,
         @JsonProperty("Name") String name,
         @JsonProperty("GmailId") String gmailId,
-        @JsonProperty("Location") Location location,
-        @JsonProperty("Timestamp") String timestamp
+        @JsonProperty("Location") Location location
     ) {
         this.userId = userId;
         this.name = name;
@@ -79,5 +78,13 @@ public class User {
     
     public void setLocation(double lat, double lon) {
     	this.location = new Location(lat, lon);
+    }
+    
+    public String getTimestamp() {
+    	return this.timestamp;
+    }
+    
+    public void setTimestamp(String timestamp) {
+    	this.timestamp = timestamp;
     }
 }
