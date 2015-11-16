@@ -14,14 +14,14 @@ import object.Location;
 @Entity
 public class User {
     @Id
-    private String userId;
+    private Long userId;
     private String name;
     private String gmailId;
     private Location location;
     private String timestamp; //Location was last updated at this time.
  
     private User() {
-        this.userId = null;
+        this.userId = 0L;
         this.name = null;
         this.gmailId = null;
         this.location = null;
@@ -30,7 +30,7 @@ public class User {
 
     @JsonCreator
     public User(
-        @JsonProperty("UserId") String userId,
+        @JsonProperty("UserId") Long userId,
         @JsonProperty("Name") String name,
         @JsonProperty("GmailId") String gmailId,
         @JsonProperty("Location") Location location
@@ -41,11 +41,11 @@ public class User {
         this.location = location;
     }
     
-    public String getUserId() {
+    public Long getUserId() {
     	return this.userId;
     }
     
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
     	this.userId = userId;
     }
     

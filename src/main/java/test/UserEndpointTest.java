@@ -38,7 +38,7 @@ public class UserEndpointTest {
     
     @Test
     public void testAddUser() {
-    	User user = new User("userId",
+    	User user = new User((long) 120,
     			"name",
     			"gmailId",
     			new Location(12.0, 12.0)
@@ -49,14 +49,14 @@ public class UserEndpointTest {
     	
     	userEndpoint.createUser(user);
     	
-    	User user2 = userEndpoint.getUser("userId");
+    	User user2 = userEndpoint.getUser((long) 120);
     	Assert.assertNotNull(user2);
     	Assert.assertTrue(user2.equals(user));
     }
     
     @Test
     public void testDeleteUser() {
-    	User user = new User("userId",
+    	User user = new User((long) 120,
     			"name",
     			"gmailId",
     			new Location(12.0, 12.0)
@@ -66,18 +66,18 @@ public class UserEndpointTest {
     	ObjectifyService.register(User.class);
     	
     	userEndpoint.createUser(user);
-    	User user2 = userEndpoint.deleteUser("userId");
+    	User user2 = userEndpoint.deleteUser((long) 120);
     	
     	Assert.assertTrue(user2.equals(user));
     	
-    	User user3 = userEndpoint.getUser("userId");
+    	User user3 = userEndpoint.getUser((long) 120);
     	
     	Assert.assertNull(user3);
     }
     
     @Test
     public void testUpdateUser() {
-    	User user = new User("userId",
+    	User user = new User((long) 120,
     			"name",
     			"gmailId",
     			new Location(12.0, 12.0)
@@ -99,7 +99,7 @@ public class UserEndpointTest {
     
     @Test
     public void testUpdateUserLocation() {
-    	User user = new User("userId",
+    	User user = new User((long) 120,
     			"name",
     			"gmailId",
     			new Location(12.0, 12.0)

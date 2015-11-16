@@ -47,7 +47,7 @@ public class UserEndpoint {
     @GET
     @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("userId") String userId) {
+    public User getUser(@PathParam("userId") Long userId) {
         return ofy().load().type(User.class).id(userId).now();
     }
 
@@ -63,7 +63,7 @@ public class UserEndpoint {
     @Path("{userId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User updateUserInformation(@PathParam("userId") String userId, User user) {
+    public User updateUserInformation(@PathParam("userId") Long userId, User user) {
         Key<User> key = ofy().save().entity(user).now();
         return ofy().load().key(key).now();
     }
@@ -76,7 +76,7 @@ public class UserEndpoint {
     @DELETE
     @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User deleteUser(@PathParam("userId") String userId) {
+    public User deleteUser(@PathParam("userId") Long userId) {
     	User user = ofy().load().type(User.class).id(userId).now();
         ofy().delete().entity(user).now();
         return user;
@@ -90,7 +90,7 @@ public class UserEndpoint {
     @GET
     @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Location getUserLocation(@PathParam("userId") String userId) {
+    public Location getUserLocation(@PathParam("userId") Long userId) {
         User user = ofy().load().type(User.class).id(userId).now();
         return user.getLocation();
     }
@@ -107,7 +107,7 @@ public class UserEndpoint {
     @Path("{userId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User updateUserLocation(@PathParam("userId") String userId, User user) {
+    public User updateUserLocation(@PathParam("userId") Long userId, User user) {
         Key<User> key = ofy().save().entity(user).now();
         return ofy().load().key(key).now();
     }
