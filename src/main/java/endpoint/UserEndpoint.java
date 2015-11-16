@@ -60,6 +60,9 @@ public class UserEndpoint {
 
     /**
      * Update a User's information.
+     * @param   userId      The userId of the User being updated.
+     * @param   user        The User being updated.
+     * @return              The updated User.
      */
     @PUT
     @Path("/user/{userId}")
@@ -98,7 +101,7 @@ public class UserEndpoint {
     /**
      * Update a User's Location.
      * @param   userId      The userId of the User whose Location is to be updated.
-     * @param   location    The new Location of the User.
+     * @param   user        The User with (presumably) updated Location.
      * @return              The updated User.
      */
     @PUT
