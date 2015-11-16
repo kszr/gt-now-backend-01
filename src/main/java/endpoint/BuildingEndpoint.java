@@ -33,6 +33,7 @@ public class BuildingEndpoint {
 	 * @return	A List of all Buildings in the datastore. 
 	 */
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Building> getAllBuildings() {
 		return ofy().load().type(Building.class).list();
 	}
@@ -44,6 +45,7 @@ public class BuildingEndpoint {
 	 */
 	@GET
 	@Path("{buildingId}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Building getBuilding(@PathParam("buildingId") Long buildingId) {
 		return ofy().load().type(Building.class).id(buildingId).now();
 	}
