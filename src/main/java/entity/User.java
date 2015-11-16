@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class User {
-    @Id String userId;
-    String name;
-    String gmailId;
-    Location location;
-    String timestamp; //Location was last updated at this time.
+    @Id
+    private String userId;
+    private String name;
+    private String gmailId;
+    private Location location;
+    private String timestamp; //Location was last updated at this time.
 
     public class Location {
         public double latitude;
@@ -46,5 +47,37 @@ public class User {
         this.gmailId = gmailId;
         this.location = location;
         this.timestamp = timestamp;
+    }
+    
+    public String getUserId() {
+    	return this.userId;
+    }
+    
+    public void setUserId(String userId) {
+    	this.userId = userId;
+    }
+    
+    public String getName() {
+    	return this.name;
+    }
+    
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public String getGmailId() {
+    	return this.gmailId;
+    }
+    
+    public void setGmailId(String gmailId) {
+    	this.gmailId = gmailId;
+    }
+    
+    public Location getLocation() {
+    	return this.location;
+    }
+    
+    public void setLocation(double lat, double lon) {
+    	this.location = new Location(lat, lon);
     }
 }

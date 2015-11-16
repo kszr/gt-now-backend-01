@@ -1,14 +1,20 @@
 package endpoint;
 
 import entity.User;
+import entity.User.Location;
 
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.QueryResultIterator;
 import com.googlecode.objectify.cmd.Query;
 
+import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Objectify;
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -34,7 +40,8 @@ public class UserEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User createUser(User user) {
-        return ofy().save().entity(user).now();
+        Key<User> key = ofy().save().entity(user).now();
+        return ofy().load().key(key).now();
     }
 
     /**
@@ -60,7 +67,8 @@ public class UserEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User updateUserInformation(@PathParam("userId") String userId, User user) {
-        return ofy().save().entity(user).now();
+        Key<User> key = ofy().save().entity(user).now();
+        return ofy().load().key(key).now();
     }
 
     /**
@@ -72,8 +80,9 @@ public class UserEndpoint {
     @Path("/user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public User deleteUser(@PathParam("userId") String userId) {
-        User user = ofy().load().type(User.class).id(userId).now();
-        return ofy().delete().entity(user).now();
+    	User user = ofy().load().type(User.class).id(userId).now();
+        ofy().delete().entity(user).now();
+        return user;
     }
 
     /**
@@ -86,7 +95,7 @@ public class UserEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Location getUserLocation(@PathParam("userId") String userId) {
         User user = ofy().load().type(User.class).id(userId).now();
-        return user.location;
+        return user.getLocation();
     }
 
     /**
@@ -100,6 +109,7 @@ public class UserEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User updateUserLocation(@PathParam("userId") String userId, User user) {
-        return ofy().save().entity(user).now();
+        Key<User> key = ofy().save().entity(user).now();
+        return ofy().load().key(key).now();
     }
 }
