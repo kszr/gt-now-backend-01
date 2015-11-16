@@ -1,3 +1,5 @@
+package main.java;
+
 import com.googlecode.objectify.impl.ObjectifyImpl;
 
 /**

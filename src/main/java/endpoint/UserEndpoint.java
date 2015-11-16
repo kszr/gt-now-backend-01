@@ -1,6 +1,6 @@
-package endpoint;
+package main.java.endpoint;
 
-import entity.User;
+import main.java.entity.User;
 
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;

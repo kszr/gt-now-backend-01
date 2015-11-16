@@ -1,4 +1,6 @@
-import static com.motomapia.OfyService.ofy;
+package main.java;
+
+import static OfyService.ofy;
 
 import com.googlecode.objectify.impl.LoaderImpl;
 import com.motomapia.entity.EmailLookup;
