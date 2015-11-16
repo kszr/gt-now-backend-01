@@ -1,7 +1,7 @@
 package endpoint;
 
 import entity.User;
-import entity.User.Location;
+import object.Location;
 
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.api.datastore.QueryResultIterator;
@@ -24,19 +24,14 @@ import javax.ws.rs.core.MediaType;
 /**
  * Endpoints for the User entity.
  */
-@Path("/api")
+@Path("/api/user")
 public class UserEndpoint {
-    public UserEndpoint() {
-
-    }
-
     /**
      * Add a new User object to the datastore.
      * @param   user     The User object that is to be added to the datastore.
      * @return           The User that has just been added.
      */
     @POST
-    @Path("/user")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User createUser(User user) {
@@ -50,7 +45,7 @@ public class UserEndpoint {
      * @return              The User that is to be retrieved.
      */
     @GET
-    @Path("/user/{userId}")
+    @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUser(@PathParam("userId") String userId) {
         return ofy().load().type(User.class).id(userId).now();
@@ -65,7 +60,7 @@ public class UserEndpoint {
      * @TODO				Update timestamp when this method is called.
      */
     @PUT
-    @Path("/user/{userId}")
+    @Path("{userId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User updateUserInformation(@PathParam("userId") String userId, User user) {
@@ -79,7 +74,7 @@ public class UserEndpoint {
      * @return              The User that has just been deleted.
      */
     @DELETE
-    @Path("/user/{userId}")
+    @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public User deleteUser(@PathParam("userId") String userId) {
     	User user = ofy().load().type(User.class).id(userId).now();
@@ -93,7 +88,7 @@ public class UserEndpoint {
      * @return              The Location of the user.
      */
     @GET
-    @Path("/user/{userId}")
+    @Path("{userId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Location getUserLocation(@PathParam("userId") String userId) {
         User user = ofy().load().type(User.class).id(userId).now();
@@ -109,7 +104,7 @@ public class UserEndpoint {
      * @TODO				Update timestamp when this method is called.
      */
     @PUT
-    @Path("/user/{userId}")
+    @Path("{userId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User updateUserLocation(@PathParam("userId") String userId, User user) {

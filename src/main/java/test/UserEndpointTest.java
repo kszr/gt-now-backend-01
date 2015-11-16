@@ -2,7 +2,7 @@ package test;
 
 import endpoint.UserEndpoint;
 import entity.User;
-import entity.User.Location;
+import object.Location;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 import com.googlecode.objectify.util.Closeable;
 
 /**
- * Testing to see whether the UserEndpoint stuff works.
+ * Testing endpoints for User.
  */
 public class UserEndpointTest {
     private final LocalServiceTestHelper helper =
@@ -118,8 +118,8 @@ public class UserEndpointTest {
     	
     	User user3 = userEndpoint.updateUserLocation(user.getUserId(), user2);
     	
-    	Assert.assertTrue(user3.getLocation().latitude == 42.0 &&
-    			user3.getLocation().longitude == 42.0);
+    	Assert.assertTrue(user3.getLocation().getLatitude() == 42.0 &&
+    			user3.getLocation().getLongitude() == 42.0);
     }
     
     @After

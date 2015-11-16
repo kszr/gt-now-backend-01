@@ -7,6 +7,11 @@ import com.googlecode.objectify.annotation.Index;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import object.Location;
+
+/**
+ * A class representing a User entity.
+ */
 @Entity
 public class User {
     @Id
@@ -15,17 +20,7 @@ public class User {
     private String gmailId;
     private Location location;
     private String timestamp; //Location was last updated at this time.
-
-    public static class Location {
-        public double latitude;
-        public double longitude;
-
-        public Location(double latitude, double longitude) {
-            this.latitude = latitude;
-            this.longitude = longitude;
-        }
-    }   
-
+ 
     private User() {
         this.userId = null;
         this.name = null;
@@ -45,7 +40,6 @@ public class User {
         this.name = name;
         this.gmailId = gmailId;
         this.location = location;
-        this.timestamp = timestamp;
     }
     
     public String getUserId() {
