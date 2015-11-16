@@ -8,7 +8,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * From: 
+ * Our version of ObjectifyFactory which integrates with Guice.  You could and convenience methods here too.
+ *
+ * Source: https://github.com/stickfigure/motomapia
  */
 @Singleton
 @Slf4j

@@ -7,7 +7,7 @@ import com.motomapia.entity.Person;
 /**
  * Extend the Loader command with our own logic
  *
- * @author Jeff Schnitzer
+ * Source: https://github.com/stickfigure/motomapia
  */
 public class OfyLoader extends LoaderImpl<OfyLoader>
 {

@@ -3,7 +3,7 @@ import com.googlecode.objectify.impl.ObjectifyImpl;
 /**
  * Our basic data access interface.  Extends the basic Objectify interface to add our custom logic.
  *
- * @author Jeff Schnitzer
+ * Source: https://github.com/stickfigure/motomapia
  */
 public class Ofy extends ObjectifyImpl<Ofy>
 {

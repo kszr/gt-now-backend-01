@@ -6,7 +6,7 @@ import javax.inject.Inject;
  * OfyFactory instead of the standard ObjectifyFactory - make sure to register this class for static injection in
  * Guice.
  * 
- * @author Jeff Schnitzer
+ * Source: https://github.com/stickfigure/motomapia
  */
 public class OfyService
 {
