@@ -1,22 +1,3 @@
-// import java.io.IOException;
-
-// import javax.inject.Inject;
-// import javax.servlet.http.HttpServletRequest;
-// import javax.ws.rs.FormParam;
-// import javax.ws.rs.Produces;
-// import javax.ws.rs.core.MediaType;
-
-// import com.googlecode.objectify.TxnType;
-
-// @Path("/api")
-// public class UserEndpoint {
-//     @GET
-//     @Path("/user/{userId}")
-//     @Produces(MediaType.APPLICATION_JSON)
-//     public User getUser(String userId) {
-//         return ofy().load().type(User.class).id(userId).now();
-//     }
-// }
 package endpoint;
 
 import entity.User;
@@ -39,6 +20,10 @@ import java.util.logging.Logger;
 
 import javax.inject.Named;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
