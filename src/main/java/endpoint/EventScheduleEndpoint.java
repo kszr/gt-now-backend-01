@@ -26,6 +26,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * Endpoints for EventSchedule.
+ * 
+ * @TODO Filters.
+ */
 @Path("api/event-schedules")
 public class EventScheduleEndpoint {
 	/**
