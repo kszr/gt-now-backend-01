@@ -20,7 +20,7 @@ public class Group {
 	private Date createTime;
 	private int intervalExpire;
 	
-	private void Group() {
+	private Group() {
 		this.groupId = 0L;
 		this.gtIdCreator = null;
 		this.name = null;

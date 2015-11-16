@@ -1,16 +1,8 @@
 package endpoint;
 
 import entity.Group;
-import entity.Invitation;
 import entity.User;
-import object.Location;
-
-import com.google.appengine.api.datastore.Cursor;
-import com.google.appengine.api.datastore.QueryResultIterator;
-import com.googlecode.objectify.cmd.Query;
-
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Objectify;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.List;

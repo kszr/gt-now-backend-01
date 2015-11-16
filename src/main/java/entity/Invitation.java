@@ -30,7 +30,7 @@ public class Invitation {
 	 * 3 - "Deleted" - A User has been removed from the Group.
 	 */
 	
-	private void Invitation() {
+	private Invitation() {
 		this.invitationId = 0L;
 		this.recipient = null;
 		this.invitedBy = null;

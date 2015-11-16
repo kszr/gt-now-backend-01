@@ -1,23 +1,13 @@
 package endpoint;
 
 import entity.EventSchedule;
-import entity.Group;
-import entity.Invitation;
-import entity.User;
-import object.Location;
-
-import com.google.appengine.api.datastore.Cursor;
-import com.google.appengine.api.datastore.QueryResultIterator;
-import com.googlecode.objectify.cmd.Query;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Objectify;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.List;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
