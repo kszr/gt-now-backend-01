@@ -61,6 +61,8 @@ public class UserEndpoint {
      * @param   userId      The userId of the User being updated.
      * @param   user        The User being updated.
      * @return              The updated User.
+     *
+     * @TODO				Update timestamp when this method is called.
      */
     @PUT
     @Path("/user/{userId}")
@@ -103,6 +105,8 @@ public class UserEndpoint {
      * @param   userId      The userId of the User whose Location is to be updated.
      * @param   user        The User with (presumably) updated Location.
      * @return              The updated User.
+     * 
+     * @TODO				Update timestamp when this method is called.
      */
     @PUT
     @Path("/user/{userId}")
