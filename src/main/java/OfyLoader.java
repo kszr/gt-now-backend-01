@@ -1,5 +1,3 @@
-package main.java;
-
 import static OfyService.ofy;
 
 import com.googlecode.objectify.impl.LoaderImpl;

@@ -1,5 +1,3 @@
-package main.java;
-
 import com.google.inject.Injector;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.motomapia.entity.EmailLookup;

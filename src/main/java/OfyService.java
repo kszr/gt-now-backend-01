@@ -1,5 +1,3 @@
-package main.java;
-
 import com.googlecode.objectify.ObjectifyService;
 import javax.inject.Inject;
 
