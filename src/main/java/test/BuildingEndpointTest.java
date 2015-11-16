@@ -62,7 +62,9 @@ public class BuildingEndpointTest {
     	}
     	
     	for(int i=1; i<=10; i++) {
-    		Assert.assertNotNull(buildingEndpoint.getBuilding((long) i));
+    		Building building = buildingEndpoint.getBuilding((long) i);
+    		Assert.assertNotNull(building);
+    		Assert.assertTrue(building.getName().equals("building"+i));
     	}
     }
     
