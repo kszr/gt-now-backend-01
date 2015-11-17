@@ -1,0 +1,13 @@
+endpoint/GroupEndpoint.class
+endpoint/UserEndpoint.class
+endpoint/EventScheduleEndpoint.class
+entity/User.class
+object/Location.class
+endpoint/InvitationEndpoint.class
+entity/Invitation.class
+entity/EventSchedule.class
+endpoint/EventEndpoint.class
+endpoint/BuildingEndpoint.class
+entity/Building.class
+entity/Event.class
+entity/Group.class

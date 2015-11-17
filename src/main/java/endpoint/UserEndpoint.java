@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Endpoints for the User entity.
  */
-@Path("/api/user")
+@Path("/user")
 public class UserEndpoint {
     /**
      * Add a new User object to the datastore.
